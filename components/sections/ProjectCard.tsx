@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { Project } from "@/lib/projects";
 import { cn } from "@/lib/utils";
+import { RevealText } from "@/components/ui/text-reveal";
 
 export function ProjectCard({ project }: { project: Project }) {
   const accent =
@@ -32,24 +33,37 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <p className={cn("mb-2 font-mono text-[11px] uppercase tracking-widest", accent)}>
-          {project.category}
-        </p>
-        <h3 className="mb-2 font-display text-xl font-medium text-ink">
-          {project.title}
-        </h3>
-        <p className="mb-5 flex-1 text-sm leading-relaxed text-muted">
-          {project.summary}
-        </p>
+        <RevealText
+          as="p"
+          trigger="inView"
+          stagger={0.08}
+          className={cn("mb-2 block font-mono text-[11px] uppercase tracking-widest", accent)}
+          text={project.category}
+        />
+        <RevealText
+          as="h3"
+          trigger="inView"
+          stagger={0.05}
+          className="mb-2 block font-display text-xl font-medium text-ink"
+          text={project.title}
+        />
+        <RevealText
+          as="p"
+          trigger="inView"
+          stagger={0.012}
+          className="mb-5 block flex-1 text-sm leading-relaxed text-muted"
+          text={project.summary}
+        />
 
         <div className="mb-5 flex flex-wrap gap-2">
           {project.tags.map((t) => (
-            <span
+            <RevealText
               key={t}
+              as="span"
+              trigger="inView"
               className="rounded border border-border/70 px-2 py-1 font-mono text-[10px] text-faint"
-            >
-              {t}
-            </span>
+              text={t}
+            />
           ))}
         </div>
 

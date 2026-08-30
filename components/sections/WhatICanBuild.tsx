@@ -1,5 +1,6 @@
 import { Bot, Server, Globe, LineChart } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
+import { RevealText } from "@/components/ui/text-reveal";
 
 const items = [
   {
@@ -47,12 +48,20 @@ export function WhatICanBuild() {
                 }`}
                 strokeWidth={1.5}
               />
-              <h3 className="mb-2 font-display text-lg font-medium text-ink">
-                {item.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-muted">
-                {item.description}
-              </p>
+              <RevealText
+                as="h3"
+                trigger="inView"
+                stagger={0.06}
+                className="mb-2 block font-display text-lg font-medium text-ink"
+                text={item.title}
+              />
+              <RevealText
+                as="p"
+                trigger="inView"
+                stagger={0.015}
+                className="block text-sm leading-relaxed text-muted"
+                text={item.description}
+              />
             </div>
           ))}
         </div>

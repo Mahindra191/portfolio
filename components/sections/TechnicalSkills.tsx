@@ -1,4 +1,5 @@
 import { SectionHeading } from "./SectionHeading";
+import { RevealText } from "@/components/ui/text-reveal";
 
 const groups = [
   {
@@ -32,17 +33,21 @@ export function TechnicalSkills() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {groups.map((group) => (
             <div key={group.label}>
-              <p className="mb-3 font-mono text-xs uppercase tracking-widest text-faint">
-                {group.label}
-              </p>
+              <RevealText
+                as="p"
+                trigger="inView"
+                className="mb-3 block font-mono text-xs uppercase tracking-widest text-faint"
+                text={group.label}
+              />
               <div className="flex flex-wrap gap-2">
                 {group.items.map((item) => (
-                  <span
+                  <RevealText
                     key={item}
+                    as="span"
+                    trigger="inView"
                     className="rounded-md border border-border px-3 py-1.5 text-sm text-ink transition-colors hover:border-signal-cyan/60 hover:text-signal-cyan"
-                  >
-                    {item}
-                  </span>
+                    text={item}
+                  />
                 ))}
               </div>
             </div>

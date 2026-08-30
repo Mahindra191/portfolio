@@ -1,5 +1,12 @@
 import Image from "next/image";
 import { SectionHeading } from "./SectionHeading";
+import { RevealText } from "@/components/ui/text-reveal";
+
+const paragraphs = [
+  "I'm an AI and Full-Stack Developer focused on building practical software applications using modern AI and web technologies.",
+  "My projects span RAG and knowledge systems, multi-agent AI, distributed applications and machine learning. I enjoy working across the stack — from designing APIs and data systems to building frontend experiences and deploying applications.",
+  "I'm particularly interested in projects where AI needs to be integrated into a real product rather than treated as a standalone chatbot.",
+];
 
 export function About() {
   return (
@@ -18,22 +25,9 @@ export function About() {
         <div>
           <SectionHeading eyebrow="About" title="About Me" />
           <div className="-mt-8 space-y-5 text-base leading-relaxed text-muted">
-            <p>
-              I&apos;m an AI and Full-Stack Developer focused on building
-              practical software applications using modern AI and web
-              technologies.
-            </p>
-            <p>
-              My projects span RAG and knowledge systems, multi-agent AI,
-              distributed applications and machine learning. I enjoy working
-              across the stack — from designing APIs and data systems to
-              building frontend experiences and deploying applications.
-            </p>
-            <p>
-              I&apos;m particularly interested in projects where AI needs to
-              be integrated into a real product rather than treated as a
-              standalone chatbot.
-            </p>
+            {paragraphs.map((p, i) => (
+              <RevealText key={i} as="p" trigger="inView" stagger={0.01} className="block" text={p} />
+            ))}
           </div>
         </div>
       </div>
